@@ -23,7 +23,7 @@ public class ObjectMove : MonoBehaviour
 	public float smoothTime = 0.1f;
 	public float t = 0.05f;
 
-	private void Start()
+	void Start()
 	{
 		mode = eMode.NONE;
 		start = transform.position;
