@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnityObjectControl : MonoBehaviour
+public class ObjectInput : MonoBehaviour
 {
 	void Update()
 	{

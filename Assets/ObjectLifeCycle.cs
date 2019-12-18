@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class UnityObjectLifeCycle : MonoBehaviour
+public class ObjectLifeCycle : MonoBehaviour
 {
 	void Awake()
 	{
