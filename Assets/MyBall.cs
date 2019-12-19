@@ -19,7 +19,7 @@ public class MyBall : MonoBehaviour
 
 	void Start()
 	{
-		mode = eMode.NONE;
+		mode = eMode.ADD_FORCE;
 		start = transform.position;
 
 		body = GetComponent<Rigidbody>();
@@ -77,5 +77,23 @@ public class MyBall : MonoBehaviour
 				body.AddTorque(torque);
 				break;
 		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject.name == "OtherCube")
+		{
+			Vector3 force = 2000 * Time.deltaTime * Vector3.up;
+			body.AddForce(force, ForceMode.Impulse);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		
 	}
 }
