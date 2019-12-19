@@ -96,4 +96,11 @@ public class MyBall : MonoBehaviour
 	{
 		
 	}
+
+	public void Jump()
+	{
+		Debug.Log("점프!");
+		Vector3 force = 20000 * Time.deltaTime * Vector3.up;
+		body.AddForce(force, ForceMode.Impulse);
+	}
 }
