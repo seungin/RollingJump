@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerBall : MonoBehaviour
 {
 	Rigidbody body;
+	AudioSource audio;
 
 	bool isJump = false;
-	public float jumpPower = 30;
+	public float jumpPower;
+	public int itemCount;
 
 	void Awake()
 	{
 		body = GetComponent<Rigidbody>();
+		audio = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -32,9 +35,19 @@ public class PlayerBall : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.name == "Floor")
+		if (collision.gameObject.tag == "Floor")
 		{
 			isJump = false;
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Item")
+		{
+			itemCount++;
+			audio.Play();
+			other.gameObject.SetActive(false);
 		}
 	}
 }
