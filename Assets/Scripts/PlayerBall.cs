@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBall : MonoBehaviour
 {
@@ -55,11 +56,14 @@ public class PlayerBall : MonoBehaviour
 		{
 			if (itemCount == manager.totalItemCount)
 			{
-				Debug.Log("Game Clear!");
+				int nextStage = (manager.stage + 1) % 3;
+				Debug.Log("Go to next stage: " + nextStage);
+				SceneManager.LoadScene(nextStage);
 			}
 			else
 			{
-				Debug.Log("Restart..");
+				Debug.Log("Restart this stage: " + manager.stage);
+				SceneManager.LoadScene(manager.stage);
 			}
 		}
 	}
