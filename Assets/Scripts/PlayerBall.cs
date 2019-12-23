@@ -7,9 +7,11 @@ public class PlayerBall : MonoBehaviour
 	Rigidbody body;
 	AudioSource audio;
 
-	bool isJump = false;
 	public float jumpPower;
 	public int itemCount;
+	public GameManager manager;
+
+	bool isJump = false;
 
 	void Awake()
 	{
@@ -48,6 +50,17 @@ public class PlayerBall : MonoBehaviour
 			itemCount++;
 			audio.Play();
 			other.gameObject.SetActive(false);
+		}
+		else if (other.tag == "Finish")
+		{
+			if (itemCount == manager.totalItemCount)
+			{
+				Debug.Log("Game Clear!");
+			}
+			else
+			{
+				Debug.Log("Restart..");
+			}
 		}
 	}
 }
