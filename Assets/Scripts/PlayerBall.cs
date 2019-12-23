@@ -49,6 +49,7 @@ public class PlayerBall : MonoBehaviour
 		if (other.tag == "Item")
 		{
 			itemCount++;
+			manager.GetItem(itemCount);
 			audio.Play();
 			other.gameObject.SetActive(false);
 		}
@@ -56,9 +57,17 @@ public class PlayerBall : MonoBehaviour
 		{
 			if (itemCount == manager.totalItemCount)
 			{
-				int nextStage = (manager.stage + 1) % 3;
-				Debug.Log("Go to next stage: " + nextStage);
-				SceneManager.LoadScene(nextStage);
+				if (manager.stage == 2)
+				{
+					Debug.Log("Finish all stage!");
+					SceneManager.LoadScene(0);
+				}
+				else
+				{
+					Debug.Log("Go to next stage: " + (manager.stage + 1));
+					SceneManager.LoadScene(manager.stage + 1);
+				}
+
 			}
 			else
 			{
